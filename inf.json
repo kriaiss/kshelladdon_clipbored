@@ -1,0 +1,10 @@
+{
+  "name": "kshelladdon clipbored",
+  "author": "kriaiss",
+  "version": "1.0.0",
+  "description": "clipboard manager and history tab for kshell",
+  "dependencies": [
+    "pyobjc-framework-cocoa",
+    "pyqt6"
+  ]
+}
