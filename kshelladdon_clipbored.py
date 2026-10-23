@@ -37,6 +37,7 @@ class ClipboardTab(QWidget):
         self.input.clear()
 
     def update_display(self):
+        self.refresh_list()
         try:
             import AppKit
             is_dark = AppKit.NSUserDefaults.standardUserDefaults().stringForKey_("AppleInterfaceStyle") == "Dark"
@@ -73,7 +74,8 @@ class ClipboardTab(QWidget):
             if text in self.history: 
                 self.history.remove(text)
             self.history.appendleft(text)
-            if not self.input.text().strip(): 
+            # dont rebuild 100 cards on every copy if the shell is closed, waste of ram and cpu
+            if self.isVisible() and not self.input.text().strip(): 
                 self.refresh_list()
 
     def refresh_list(self):
